@@ -7,7 +7,8 @@ class Artist < ActiveRecord::Base
     end
 
     def self.find_by_slug(slug)
-        @artist = Artist.where("name = '#{slug.titleize.gsub("-", " ")}'").first
+        # @artist = Artist.where("name = '#{slug.titleize.gsub("-", " ")}'").first
+        @artist = Artist.all.find {|artist| artist.slug == slug }
     end
 
 end
