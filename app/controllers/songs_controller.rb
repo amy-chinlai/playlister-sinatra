@@ -14,8 +14,9 @@ class SongsController < ApplicationController
         # binding.pry
         @song = Song.create(name: params[:Name])
         @song.artist = Artist.find_or_create_by(name: params[:artist_name])
-        @genre = Genre.find_by_id(id: params[:genres][0])
+        @genre = Genre.find_by_id(id: params[:genres][0].to_i)
         @song.song_genres.create(genre: @genre)
+        binding.pry
         @song.save
         # @song.song_genres.save
         # binding.pry
